@@ -19,24 +19,19 @@ loadPokemons();
 
 const pokemonSelected = async (pokemonUrl) => {
     try {
-
         const response = await fetch(pokemonUrl).then(response => response.json());
 
         const pokemonImage = document.getElementById("pokemon-image");
         const pokemonName = document.getElementById("pokemon-name");
         const pokemonStats = document.getElementById("pokemon-stats");
+        const pokemonAbilities = document.getElementById("pokemon-abilities");
 
         pokemonImage.src = response.sprites.front_default;
         pokemonName.textContent = response.name;
 
-        pokemonStats.innerHTML = "";
+        pokemonStats.innerHTML = response.stats.map(stat => `<li>${stat.stat.name}: ${stat.base_stat}</li>`).join("");
+        pokemonAbilities.innerHTML = response.abilities.map(ability => `<li>${ability.ability.name}</li>`).join("");
 
-        response.stats.forEach(stat => {
-            const li = document.createElement("li");
-            li.textContent = `${stat.stat.name}: ${stat.base_stat}`;
-            pokemonStats.appendChild(li);
-
-        })
     } catch (error) {
         console.error("Error fetching pokemon details:", error);
     }
