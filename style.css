@@ -56,14 +56,38 @@ select:focus {
     text-transform: capitalize;
 }
 
-#pokemon-image {
+.pokemon-card {
+    position: relative;
     width: 200px;
+    margin: 0 auto 20px;
+}
+
+#pokemon-image {
+    width: 100%;
     height: 200px;
     display: block;
-    margin: 0 auto 20px;
     background-color: #f9f9f9;
     padding: 10px;
     border-radius: 4px;
+}
+
+.pokemon-type {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.pokemon-card:hover .pokemon-type {
+    display: block;
 }
 
 h3 {

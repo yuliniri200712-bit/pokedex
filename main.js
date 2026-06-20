@@ -23,11 +23,16 @@ const pokemonSelected = async (pokemonUrl) => {
 
         const pokemonImage = document.getElementById("pokemon-image");
         const pokemonName = document.getElementById("pokemon-name");
+        const pokemonType = document.getElementById("pokemon-type");
         const pokemonStats = document.getElementById("pokemon-stats");
         const pokemonAbilities = document.getElementById("pokemon-abilities");
 
+        const types = response.types.map(typeInfo => typeInfo.type.name).join(" / ");
+
         pokemonImage.src = response.sprites.front_default;
+        pokemonImage.title = `Tipo: ${types}`;
         pokemonName.textContent = response.name;
+        pokemonType.textContent = `Tipo: ${types}`;
 
         pokemonStats.innerHTML = response.stats.map(stat => `<li>${stat.stat.name}: ${stat.base_stat}</li>`).join("");
         pokemonAbilities.innerHTML = response.abilities.map(ability => `<li>${ability.ability.name}</li>`).join("");
