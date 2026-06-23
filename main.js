@@ -41,6 +41,7 @@ const pokemonSelected = async (pokemonUrl) => {
         console.error("Error fetching pokemon details:", error);
     }
 }
+
 // fetch(`${POKEAPI_URL}/pokemon`)
 // .then(response => response.json())
 // .then(data => {
